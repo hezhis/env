@@ -16,6 +16,11 @@ type DBConnections struct {
 	Redis map[string]*RedisConn `json:"redis"`
 }
 
+func (c *DBConnections) GetRedisConn(connName string) (*RedisConn, bool) {
+	conn, ok := c.Redis[connName]
+	return conn, ok
+}
+
 type OBS struct {
 	Bucket  string `json:"bucket"`
 	Backup  int    `json:"backup"`
